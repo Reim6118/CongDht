@@ -13,10 +13,8 @@ from twisted.python.log import ILogObserver, FileLogObserver
 from twisted.python.logfile import DailyLogFile
 
 
-class CollectorFactory(Factory):
-    '''
-    采集器工厂，用來生成protocol
-    '''
+class CollectorFactory(Factory):  #用來生成protocol
+
     def __init__(self, serv):
         self._serv = serv
 
@@ -24,10 +22,8 @@ class CollectorFactory(Factory):
         return CollectorProtocol(self._serv)
 
 
-class CollectorProtocol(LineReceiver):
-    '''
-    接口协议，处理状态查询，服务控制
-    '''
+class CollectorProtocol(LineReceiver):  #處理協議，服務控制
+
     def __init__(self, service):
         self._service = service
 
@@ -38,10 +34,8 @@ class CollectorProtocol(LineReceiver):
         self._service.del_query_protocol(self)
 
 
-class CollectorServices(service.Service):
-    '''
-    采集进程控制服务
-    '''
+class CollectorServices(service.Service): #採集進程控制服務
+
     _query_protocols = []
 
     def __init__(self, port):
