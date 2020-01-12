@@ -20,7 +20,7 @@ def command_line():
     if args["r"]:
         rank()
     if args["a"]:
-        jsonObj=open('DHTCrawler/result.json')
+        jsonObj=open('DHTCrawler/pretty.json')
         dictObj=json.load(jsonObj)
         print(dictObj)
 
